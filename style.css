@@ -53,6 +53,8 @@ p { margin: 0 0 1rem; }
 .profile {
   position: sticky;
   top: 4rem;
+  width: fit-content;        /* column shrinks to its widest line of text */
+  max-width: 100%;
 }
 .profile .name {
   font-size: 17pt;           /* name: bold */
@@ -68,8 +70,8 @@ p { margin: 0 0 1rem; }
 }
 .photo {
   display: block;
-  width: 100%;
-  max-width: 13rem;
+  width: 0;                  /* these two lines make the photo exactly as wide */
+  min-width: 100%;           /* as the "Postdoc at Stanford University" line */
   height: auto;              /* keeps the photo's own shape */
   margin-bottom: 1.25rem;
 }
@@ -96,6 +98,8 @@ p { margin: 0 0 1rem; }
 
 /* About page: paragraphs justified (straight left and right edges) */
 .content section[data-view="about"] p { text-align: justify; }
+/* About page keeps its earlier, narrower text width */
+.content section[data-view="about"] { max-width: 40rem; }
 
 /* Right column */
 .content { max-width: 46rem; }   /* width of the text column */
@@ -152,5 +156,4 @@ p { margin: 0 0 1rem; }
     padding: 5rem 1rem 2.5rem;
   }
   .profile { position: static; }
-  .photo { max-width: 9rem; }
 }

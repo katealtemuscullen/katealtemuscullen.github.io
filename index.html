@@ -1,67 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kate Altemus-Cullen</title>
-  <!-- This short description can appear in Google search results -->
-  <meta name="description" content="Kate Altemus-Cullen is a [your field] studying [your core topic].">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="wrapper">
+/* ---------- Colors and fonts: change these to restyle the whole site ---------- */
+:root {
+  --page: #ffffff;
+  --text: #4b5157;
+  --heading: #1f2428;
+  --muted: #7a8188;
+  --link: #2a6496;
+  --rule: #e4e7ea;
+  --font: "Crimson Pro", Garamond, "Times New Roman", serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #1a1d20;
+    --text: #c9ced3;
+    --heading: #eef1f3;
+    --muted: #959ca3;
+    --link: #8ab8e0;
+    --rule: #33383d;
+    color-scheme: dark;
+  }
+}
 
-    <!-- ===== LEFT COLUMN: name, photo, position, links ===== -->
-    <header class="profile">
-      <h1>Kate Altemus-Cullen</h1>
-      <!-- Add a square photo named photo.jpg to the img folder -->
-      <div class="photo" role="img" aria-label="Photo of Kate Altemus-Cullen"></div>
-      <p class="position">
-        [Your position]<br>
-        [Department or center]<br>
-        [University]<br>
-        <a href="mailto:you@university.edu">you@university.edu</a>
-      </p>
-      <ul class="profile-links">
-        <li><a href="cv/cv.pdf">Curriculum Vitae</a></li>
-        <li><a href="https://scholar.google.com/">Google Scholar</a></li>
-      </ul>
-    </header>
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 0.15em; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+h1, h2, h3 { color: var(--heading); line-height: 1.25; font-weight: 600; }
+p { margin: 0 0 1rem; }
 
-    <!-- ===== RIGHT COLUMN: everything else ===== -->
-    <main class="content">
-      <p>I am a [your position] in [department] at [university]. [One sentence on where you are heading next, if relevant.] I received my [degree] from [institution].</p>
-      <p>My research examines [your main question], with a focus on [place, community, or topic]. [One or two sentences on why it matters or what motivates it.]</p>
-      <p>[Optional: a sentence on your methods, partners, funders, or background before academia.]</p>
+/* ---------- Two-column layout: profile on the left, content on the right ---------- */
+.wrapper {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  gap: 4rem;
+  align-items: start;
+}
 
-      <h2>Research</h2>
+/* Left column stays in view while the right column scrolls */
+.profile {
+  position: sticky;
+  top: 4rem;
+}
+.profile .name {
+  font-size: 14pt;           /* name: bold, two sizes up from the position line */
+  font-weight: 700;
+  margin: 0 0 0.2rem;
+}
+.profile .name a { color: var(--heading); }
+.profile .name a:hover { text-decoration: none; }
+.position {
+  font-size: 12pt;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+.photo {
+  width: 100%;
+  max-width: 13rem;
+  aspect-ratio: 1 / 1;       /* square */
+  /* Shows img/photo.jpg; the grey square shows until you add one */
+  background: var(--rule) url("img/photo.jpg") center / cover no-repeat;
+  margin-bottom: 1.25rem;
+}
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12pt;
+}
+.menu li { margin-bottom: 0.3rem; }
+.menu a[aria-current="page"] {
+  color: var(--heading);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  font-size: 12pt;
+  margin: 1rem 0 0;
+}
 
-      <h3>Publications</h3>
-      <ol class="pubs">
-        <!-- To add a publication, copy one <li>...</li> block. Newest first. -->
-        <li>
-          Altemus-Cullen, Kate. 2026. &ldquo;[Article title].&rdquo; <i>[Journal]</i> 12(3): 45&ndash;67. <a href="https://doi.org/10.0000/example">Link</a>
-          <span class="award">[Optional: award or note, e.g. Winner of the ___ Prize]</span>
-        </li>
-        <li>
-          [Coauthor, First], and Kate Altemus-Cullen. 2025. &ldquo;[Article title].&rdquo; <i>[Journal]</i>. <a href="https://doi.org/10.0000/example">Link</a>
-        </li>
-      </ol>
+/* Right column */
+.content { max-width: 40rem; }
+.content > p:first-child { margin-top: 0.2rem; }
+.content h2 {
+  font-size: 1.3rem;
+  margin: 2.75rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+.content h3 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.75rem;
+}
 
-      <h3>Working papers</h3>
-      <ol class="pubs">
-        <li>&ldquo;[Paper title]&rdquo; (with [coauthor]). [Status, e.g. Under review.]</li>
-      </ol>
+/* The first heading in each section sits at the top */
+.content section > h2:first-child { margin-top: 0; }
 
-      <h2>Teaching</h2>
-      <p><b>[Course title]</b>, [University]. [Your role], [term and year].</p>
-      <p><b>[Course title]</b>, [University]. [Your role], [term and year].</p>
-    </main>
+/* Photography gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1.5rem;
+}
+.gallery figure { margin: 0; }
+.shot {
+  aspect-ratio: 4 / 3;
+  background-color: var(--rule);
+  background-position: center;
+  background-size: cover;
+}
+.gallery figcaption {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
 
-    <footer>&copy; 2026 Kate Altemus-Cullen</footer>
-  </div>
-</body>
-</html>
+/* Publication lists */
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pubs li { margin-bottom: 1.1rem; }
+.pubs .award {
+  display: block;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+footer {
+  grid-column: 1 / -1;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---------- Phones and narrow windows: stack the columns ---------- */
+@media (max-width: 46rem) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 1.25rem;
+  }
+  .profile { position: static; }
+  .photo { max-width: 9rem; }
+}

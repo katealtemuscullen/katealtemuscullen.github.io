@@ -1,0 +1,124 @@
+/* ---------- Colors and fonts: change these to restyle the whole site ---------- */
+:root {
+  --page: #ffffff;
+  --text: #4b5157;
+  --heading: #1f2428;
+  --muted: #7a8188;
+  --link: #2a6496;
+  --rule: #e4e7ea;
+  --font: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #1a1d20;
+    --text: #c9ced3;
+    --heading: #eef1f3;
+    --muted: #959ca3;
+    --link: #8ab8e0;
+    --rule: #33383d;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 0.15em; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+h1, h2, h3 { color: var(--heading); line-height: 1.25; font-weight: 600; }
+p { margin: 0 0 1rem; }
+
+/* ---------- Two-column layout: profile on the left, content on the right ---------- */
+.wrapper {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: 17rem 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Left column stays in view while the right column scrolls */
+.profile {
+  position: sticky;
+  top: 4rem;
+  text-align: left;
+}
+.profile h1 {
+  font-size: 1.55rem;
+  white-space: nowrap; /* keeps the hyphenated name on one line */
+  margin: 0 0 1.25rem;
+}
+.photo {
+  width: 100%;
+  max-width: 13rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  /* Shows img/photo.jpg; the grey circle shows until you add one */
+  background: var(--rule) url("img/photo.jpg") center / cover no-repeat;
+  margin-bottom: 1.25rem;
+}
+.position {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+.profile-links {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+.profile-links li { margin-bottom: 0.4rem; }
+.profile-links a { font-weight: 600; }
+
+/* Right column */
+.content { max-width: 40rem; }
+.content > p:first-child { margin-top: 0.2rem; }
+.content h2 {
+  font-size: 1.3rem;
+  margin: 2.75rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+.content h3 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.75rem;
+}
+
+/* Publication lists */
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pubs li { margin-bottom: 1.1rem; }
+.pubs .award {
+  display: block;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+footer {
+  grid-column: 1 / -1;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---------- Phones and narrow windows: stack the columns ---------- */
+@media (max-width: 46rem) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 1.25rem;
+  }
+  .profile { position: static; }
+  .profile h1 { white-space: normal; }
+  .photo { max-width: 9rem; }
+}

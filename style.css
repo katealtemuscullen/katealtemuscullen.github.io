@@ -1,21 +1,21 @@
 /* ---------- Colors and fonts: change these to restyle the whole site ---------- */
 :root {
   --page: #ffffff;
-  --text: #4b5157;
-  --heading: #1f2428;
-  --muted: #7a8188;
-  --link: #1f2428;      /* links are black (same as headings) */
-  --rule: #e4e7ea;
-  --font: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --text: #111111;      /* all text: near-black grey */
+  --heading: #111111;
+  --muted: #111111;
+  --link: #111111;
+  --rule: #e4e7ea;      /* thin divider lines (not text) */
+  --font: "Manrope", "Helvetica Neue", Arial, sans-serif;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --page: #1a1d20;
-    --text: #c9ced3;
-    --heading: #eef1f3;
-    --muted: #959ca3;
-    --link: #eef1f3;
+    --text: #eeeeee;
+    --heading: #eeeeee;
+    --muted: #eeeeee;
+    --link: #eeeeee;
     --rule: #33383d;
     color-scheme: dark;
   }
@@ -28,8 +28,8 @@ body {
   background: var(--page);
   color: var(--text);
   font-family: var(--font);
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 a { color: var(--link); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 0.15em; }
@@ -39,13 +39,13 @@ p { margin: 0 0 1rem; }
 
 /* ---------- Two-column layout: profile on the left, content on the right ---------- */
 .wrapper {
-  max-width: 62rem;
+  max-width: 70rem;          /* overall page width */
   margin: 0 auto;
   /* Top space = the original 4rem plus about five lines of text */
-  padding: 13.5rem 2rem 4rem;
+  padding: 13.5rem 1.5rem 4rem;
   display: grid;
   grid-template-columns: 20rem 1fr;
-  gap: 4rem;
+  gap: 3rem;
   align-items: start;
 }
 
@@ -94,8 +94,11 @@ p { margin: 0 0 1rem; }
 /* Links inside your text (bio, publications) are underlined so readers can spot them */
 .content a { text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
 
+/* About page: paragraphs justified (straight left and right edges) */
+.content section[data-view="about"] p { text-align: justify; }
+
 /* Right column */
-.content { max-width: 40rem; }
+.content { max-width: 46rem; }   /* width of the text column */
 .content > p:first-child { margin-top: 0.2rem; }
 .content h2 {
   font-size: 1.3rem;
@@ -146,7 +149,7 @@ p { margin: 0 0 1rem; }
   .wrapper {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    padding: 5rem 1.25rem 2.5rem;
+    padding: 5rem 1rem 2.5rem;
   }
   .profile { position: static; }
   .photo { max-width: 9rem; }

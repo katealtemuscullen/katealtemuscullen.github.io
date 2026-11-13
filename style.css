@@ -4,7 +4,7 @@
   --text: #4b5157;
   --heading: #1f2428;
   --muted: #7a8188;
-  --link: #2a6496;
+  --link: #1f2428;      /* links are black (same as headings) */
   --rule: #e4e7ea;
   --font: "Crimson Pro", Garamond, "Times New Roman", serif;
   color-scheme: light;
@@ -15,7 +15,7 @@
     --text: #c9ced3;
     --heading: #eef1f3;
     --muted: #959ca3;
-    --link: #8ab8e0;
+    --link: #eef1f3;
     --rule: #33383d;
     color-scheme: dark;
   }
@@ -41,7 +41,8 @@ p { margin: 0 0 1rem; }
 .wrapper {
   max-width: 62rem;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  /* Top space = the original 4rem plus about five lines of text */
+  padding: 13.5rem 2rem 4rem;
   display: grid;
   grid-template-columns: 20rem 1fr;
   gap: 4rem;
@@ -54,14 +55,14 @@ p { margin: 0 0 1rem; }
   top: 4rem;
 }
 .profile .name {
-  font-size: 14pt;           /* name: bold, two sizes up from the position line */
+  font-size: 16pt;           /* name: bold, two sizes up from the position line */
   font-weight: 700;
   margin: 0 0 0.2rem;
 }
 .profile .name a { color: var(--heading); }
 .profile .name a:hover { text-decoration: none; }
 .position {
-  font-size: 12pt;
+  font-size: 14pt;
   color: var(--muted);
   margin: 0 0 1rem;
 }
@@ -77,21 +78,22 @@ p { margin: 0 0 1rem; }
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 12pt;
+  font-size: 14pt;
 }
 .menu li { margin-bottom: 0.3rem; }
+/* The menu item for the section you're on is bold (not underlined) */
+.menu a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 .menu a[aria-current="page"] {
-  color: var(--heading);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  font-weight: 700;
+  text-decoration: none;
 }
 .social {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1.25rem;
-  font-size: 12pt;
+  font-size: 14pt;
   margin: 1rem 0 0;
 }
+
+/* Links inside your text (bio, publications) are underlined so readers can spot them */
+.content a { text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
 
 /* Right column */
 .content { max-width: 40rem; }
@@ -139,18 +141,13 @@ p { margin: 0 0 1rem; }
   font-size: 0.95rem;
 }
 
-footer {
-  grid-column: 1 / -1;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
 
 /* ---------- Phones and narrow windows: stack the columns ---------- */
 @media (max-width: 46rem) {
   .wrapper {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    padding: 2.5rem 1.25rem;
+    padding: 5rem 1.25rem 2.5rem;
   }
   .profile { position: static; }
   .photo { max-width: 9rem; }

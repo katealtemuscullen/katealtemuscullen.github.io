@@ -41,8 +41,8 @@ p { margin: 0 0 1rem; }
 .wrapper {
   max-width: 70rem;          /* overall page width */
   margin: 0 auto;
-  /* Top space = the original 4rem plus about five lines of text */
-  padding: 13.5rem 1.5rem 4rem;
+  /* Top space = the original 4rem plus about four lines of text */
+  padding: 11.85rem 1.5rem 4rem;
   display: grid;
   grid-template-columns: 20rem 1fr;
   gap: 3rem;
@@ -136,6 +136,9 @@ p { margin: 0 0 1rem; }
   color: var(--muted);
   margin-top: 0.4rem;
 }
+
+/* Collaborators / selected work lines on the Research Portfolio page */
+.content .meta { font-size: 0.95rem; margin-top: -0.4rem; }
 
 /* Publication lists */
 .pubs { list-style: none; margin: 0; padding: 0; }

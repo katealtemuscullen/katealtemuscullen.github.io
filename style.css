@@ -121,7 +121,7 @@ p { margin: 0 0 1rem; }
 /* Photography gallery */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  grid-template-columns: repeat(2, 1fr);   /* two photos per row */
   gap: 1.5rem;
 }
 .gallery figure { margin: 0; }
@@ -159,4 +159,5 @@ p { margin: 0 0 1rem; }
     padding: 5rem 1rem 2.5rem;
   }
   .profile { position: static; }
+  .gallery { grid-template-columns: 1fr; }   /* one photo per row on phones */
 }
